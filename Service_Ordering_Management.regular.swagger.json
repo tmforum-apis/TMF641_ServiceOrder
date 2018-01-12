@@ -1,0 +1,1081 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "serviceOrder API designed for ONAP Beijing Release.\nThis API is build from TMF open API16.5 + applied TMF guideline 3.0",
+    "version": "0.1.0_inProgress",
+    "title": "API ServiceOrder"
+  },
+  
+  "host": "api.orange.com",
+  "basePath":	"/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json;charset=utf-8"
+  ],
+  "produces": [
+    "application/json;charset=utf-8"
+  ],
+  "tags": [
+  
+    {
+      "name": "ServiceOrder",
+      "description": ""
+    }
+  ],
+  "paths": {
+      "/serviceOrder": {
+      "post": {
+        "tags": [
+           "ServiceOrder"
+        ],
+        "operationId": "serviceOrderCreate",
+        "summary": "Create a service order",
+        "description": "This operation creates a service order entity.\nThe specification document provides the list of mandatory and non mandatory attributes when creating a ServiceOrder, including any possible rule conditions and applicable default values.\nPOST should be used without specifying the id and the href, the Service Order Management system is in charge of generating the id + href for the ServiceOrder.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "ServiceOrder",
+            "required": true,
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ServiceOrder"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ServiceOrder"
+            }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+           "ServiceOrder"
+        ],
+        "operationId": "serviceOrderFind",
+        "summary": "List service orders",
+        "description": "Retreive and list service order entities according to given criteria.\nAttribute selection is enabled for all first level attributes.\nFiltering may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+            
+              "type": "string"
+          },
+          {
+            "name": "state",
+            "required": false,
+            "in": "query",
+            "description": "Example of filtering attribute that can be used",
+            
+              "type": "string"
+          },
+          {
+            "name": "orderDate",
+            "required": false,
+            "in": "query",
+            "description": "Example of filtering attribute that can be used",
+            
+              "type": "string"
+          },
+          {
+            "name": "relatedParty.id",
+            "required": false,
+            "in": "query",
+            "description": "Example of filtering attribute that can be used",
+            
+              "type": "string"
+          },
+          {
+            "name": "relatedParty.role",
+            "required": false,
+            "in": "query",
+            "description": "Example of filtering attribute that can be used",
+            
+              "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+              "$ref": "#/definitions/ServiceOrder"
+              }
+            }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+      "/serviceOrder/{id}": {
+      "get": {
+        "tags": [
+           "ServiceOrder"
+        ],
+        "operationId": "serviceOrderGet",
+        "summary": "Retrieve a service order",
+        "description": "This operation retrieves a service order entity. \nAttribute selection is enabled for all first level attributes.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+            
+              "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ServiceOrder"
+            }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+           "ServiceOrder"
+        ],
+        "operationId": "serviceOrderPatch",
+        "summary": "Patch a service order",
+        "description": "This operation allows partial updates of a service order entity. Support of json/merge (https://tools.ietf.org/html/rfc7386) is mandatory, support of json/patch (http://tools.ietf.org/html/rfc5789) is optional. \nThe  specification document provides the list of patchable and non patchable attributes, including constraint rules on their usage.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        
+        "parameters": [
+          
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "ServiceOrder",
+            "required": true,
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ServiceOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ServiceOrder"
+            }
+
+          },
+          "400": {
+            
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "403": {
+            
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "503": {
+            
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "schema": {
+            
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    }
+  },
+"definitions": {
+  
+    "ActionType": {
+      "description": "",
+      
+      "type": "string",
+      "enum": [
+        "add",
+        "modify",
+        "delete",
+        "noChange"
+      ]
+	  
+    },
+    "StateType": {
+      "description": "",
+      
+      "type": "string",
+      "enum": [
+        "acknowledged",
+        "rejected",
+        "pending",
+        "held",
+        "inProgress",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial"
+      ]
+	  
+    },
+
+    "ErrorRepresentation": {
+      "description": "",
+      
+      "required": [
+          
+            "code",
+            "reason"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Application related code (as defined in the API or from a common list)",
+              "type": "integer",
+              "format": "int32"
+        },
+        "reason": {
+          "description": "Text that explains the reason for error. This can be shown to a client user.",
+              "type": "string"
+        },
+        "message": {
+          "description": "Text that provide more details and corrective actions related to the error. This can be shown to a client user",
+              "type": "string"
+        },
+        "status": {
+          "description": "http error code extension like 400-2",
+              "type": "string"
+        },
+        "referenceError": {
+          "description": "url pointing to documentation describing the error",
+              "type": "string"
+        },
+        "@type": {
+          "description": "The class type of a REST resource",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "it provides a link to the schema describing a REST resource",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "ServiceRelationship": {
+      "description": "Linked Services to the one instantiate",
+      
+      "required": [
+          
+            "type",
+            "service"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Relationship type. It can be : “reliesOn” if the Service needs another already owned Service to rely on (e.g. an option on an already owned mobile access Service) or “targets” or “isTargeted” (depending on the way of expressing the link) for any other kind of links that may be useful",
+              "type": "string"
+        },
+        "service": {
+          "description": "Service reference",
+              "$ref": "#/definitions/Service"
+        }
+      }
+      
+    },
+
+    "ServiceRef": {
+      "description": "Service references",
+      
+      "required": [
+          
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the service",
+              "type": "string"
+        },
+        "href": {
+          "description": "Reference of the service",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "ServiceCharacteristic": {
+      "description": "ServiceCharacteristic",
+      
+      "required": [
+          
+            "name"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of characteristic",
+              "type": "string"
+        },
+        "valueType": {
+          "description": "",
+              "type": "string"
+        },
+        "value": {
+          "description": "",
+              "$ref": "#/definitions/Value"
+        }
+      }
+      
+    },
+
+    "RelatedParty": {
+      "description": "A related party defines party which are involved in this order and the role they are playing",
+      
+      "required": [
+          
+            "id",
+            "role"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of a related party",
+              "type": "string"
+        },
+        "href": {
+          "description": "An hyperlink to the party",
+              "type": "string"
+        },
+        "role": {
+          "description": "The role of the related party (e.g. Owner, requester, fullfiller etc)",
+              "type": "string"
+        },
+        "name": {
+          "description": "Name of the related party",
+              "type": "string"
+        },
+        "@referredType": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "ServiceSpecificationRef": {
+      "description": "The service specification (default values, etc. are fetched from the catalogue).",
+      
+      "required": [
+          
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the service specification",
+              "type": "string"
+        },
+        "href": {
+          "description": "Reference of the service specification",
+              "type": "string"
+        },
+        "name": {
+          "description": "",
+              "type": "string"
+        },
+        "version": {
+          "description": "",
+              "type": "string"
+        },
+        "targetServiceSchema": {
+          "description": "",
+              "$ref": "#/definitions/TargetServiceSchema"
+        },
+        "@type": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        },
+        "@baseType": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "Service": {
+      "description": "Service attributes description (these are as per the Service ODE model as used in the Service Inventory specification)",
+      
+      "required": [
+          
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier of a service instance",
+              "type": "string"
+        },
+        "href": {
+          "description": "Reference to the owned Service (useful for delete or modify command)",
+              "type": "string"
+        },
+        "name": {
+          "description": "Name of the service",
+              "type": "string"
+        },
+        "serviceState": {
+          "description": "The lifecycle state of the service",
+              "type": "string"
+        },
+        "@type": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        },
+        "place": {
+          "description": "A list of places used to defined places useful for the service (for example a delivery geographical place)",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/Place"
+          }
+        },
+        "serviceCharacteristic": {
+          "description": "A list of service characteristics .A name/value pair list used to store instance specific values of attributes. The behavior is equivalent to a MAP data structure where only one entry for any given value of \"name\" can exist",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/ServiceCharacteristic"
+          }
+        },
+        "serviceRelationship": {
+          "description": "A list or service relationships (ServiceRelationship[*]). Linked Services to the one instantiate, it can be : “reliesOn” if the Service needs another already owned Service to rely on (e.g. an option on an already owned mobile access Service) or “targets” or “isTargeted” (depending on the way of expressing the link) for any other kind of links that may be useful",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/ServiceRelationship"
+          }
+        },
+        "relatedParty": {
+          "description": "A list of related party parties linked at the Service level (it may be a User for example)",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/RelatedParty"
+          }
+        },
+        "serviceSpecification": {
+          "description": "",
+              "$ref": "#/definitions/ServiceSpecificationRef"
+        }
+      }
+      
+    },
+
+    "Place": {
+      "description": "Used to defined a place useful for the service (for example a delivery geographical place)",
+      
+      "required": [
+          
+            "role"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "",
+              "type": "string"
+        },
+        "href": {
+          "description": "Reference of a place (for instance in google map)",
+              "type": "string"
+        },
+        "name": {
+          "description": "",
+              "type": "string"
+        },
+        "role": {
+          "description": "The role of the place (e.g. delivery address, install site etc)",
+              "type": "string"
+        },
+        "@referredType": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "OrderItemRelationship": {
+      "description": "Linked order item to the one containing this attribute",
+      
+      "required": [
+          
+            "type",
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of related order item, can be : dependancy if the order item needs to be “not started” until another order item is complete",
+              "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier of an order item",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "ServiceOrderItem": {
+      "description": "An identified part of the order. A service order is decomposed into one or more order items.",
+      
+      "required": [
+          
+            "id",
+            "service"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier of the line item (generally it is a sequence number 01, 02, 03, …)",
+              "type": "string"
+        },
+        "action": {
+          "description": "The action to be carried out on the Service. Can be add, modify, delete, noChange",
+           "$ref": "#/definitions/ActionType"
+        },
+        "state": {
+          "description": "State of the order item (described in the state machine diagram)",
+           "$ref": "#/definitions/StateType"
+        },
+        "@type": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        },
+        "@baseType": {
+          "description": "",
+              "type": "string"
+        },
+        "appointment": {
+          "description": "Used to precise that an appointment was set up with a related party for this order item",
+              "$ref": "#/definitions/AppointmentRef"
+        },
+        "orderItemRelationship": {
+          "description": "Linked order item to the one containing this attribute",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/OrderItemRelationship"
+          }
+        },
+        "service": {
+          "description": "The Service to be acted on by the order item",
+              "$ref": "#/definitions/Service"
+        }
+      }
+      
+    },
+
+    "AppointmentRef": {
+      "description": "Used to precise that an appointment was set-up with a related party for this order item",
+      
+      "required": [
+          
+            "id",
+            "href"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the appointment",
+              "type": "string"
+        },
+        "href": {
+          "description": "Reference of the appointmenrt",
+              "type": "string"
+        },
+        "@referredType": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "Note": {
+      "description": "Extra-information about the order (e.g. useful to add extra delivery information that could be useful for a human process",
+      
+      "type": "object",
+      "properties": {
+        "date": {
+          "description": "Date of the note",
+              "type": "string",
+              "format": "date"
+        },
+        "author": {
+          "description": "Author of the note",
+              "type": "string"
+        },
+        "text": {
+          "description": "Text of the note",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "ServiceOrder": {
+      "description": "A Service Order is a type of order which can be used to place an order between a customer and a service provider or between a service provider and a partner and vice versa",
+      
+      "required": [
+          
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "ID created on repository side",
+              "type": "string"
+        },
+        "href": {
+          "description": "Hyperlink to access the order",
+              "type": "string"
+        },
+        "externalId": {
+          "description": "ID given by the consumer and only understandable by him (to facilitate his searches)",
+              "type": "string"
+        },
+        "priority": {
+          "description": "A way that can be used by consumers to prioritize orders in Service Order Management system (from 0 to 4 : 0 is the highest priority, and 4 the lowest)",
+              "type": "string"
+        },
+        "description": {
+          "description": "A free-text description of the service order",
+              "type": "string"
+        },
+        "category": {
+          "description": "Used to categorize the order that can be useful for the OM system (e.g. “broadband”, “TVOption”, ...)",
+              "type": "string"
+        },
+        "state": {
+          "description": "State of the order : described in the state-machine diagram",
+           "$ref": "#/definitions/StateType"
+        },
+        "orderDate": {
+          "description": "",
+              "type": "string",
+              "format": "date-time"
+        },
+        "completionDate": {
+          "description": "",
+              "type": "string"
+        },
+        "requestedStartDate": {
+          "description": "Order start date wished by the requestor",
+              "type": "string",
+              "format": "date-time"
+        },
+        "requestedCompletionDate": {
+          "description": "Requested delivery date from the requestor perspective",
+              "type": "string",
+              "format": "date-time"
+        },
+        "expectedCompletionDate": {
+          "description": "Expected delivery date amended by the provider",
+              "type": "string",
+              "format": "date-time"
+        },
+        "startDate": {
+          "description": "Date when the order was started for processing",
+              "type": "string",
+              "format": "date-time"
+        },
+        "notificationContact": {
+          "description": "Contact attached to the order to send back information regarding this order",
+              "type": "string"
+        },
+        "@baseType": {
+          "description": "",
+              "type": "string"
+        },
+        "@type": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        },
+        "note": {
+          "description": "A list of notes .Extra-information about the order (e.g. useful to add extra delivery information that could be useful for a human process)",
+              "$ref": "#/definitions/Note"
+        },
+        "relatedParty": {
+          "description": "A list of related parties which are involved in this order and the role they are playing.",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/RelatedParty"
+          }
+        },
+        "orderRelationship": {
+          "description": "A list of related order references .Linked order to the one containing this attribute",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/OrderRelationship"
+          }
+        },
+        "orderItem": {
+          "description": "A list of order items that have to be processed.",
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/ServiceOrderItem"
+          }
+        }
+      }
+      
+    },
+
+    "OrderItemRef": {
+      "description": "Reference of an order item",
+      
+      "required": [
+          
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the order irtem",
+              "type": "string"
+        },
+        "href": {
+          "description": "Unique reference of the order item",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "OrderRelationship": {
+      "description": "Linked order to the one containing this attribute",
+      
+      "required": [
+          
+            "id"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of related order, can be : “dependency” if the order needs to be “not started” until another order item is complete (a service order in this case) or “cross-ref” to keep track of the source order (a productOrder)",
+              "type": "string"
+        },
+        "id": {
+          "description": "The id of the related order",
+              "type": "string"
+        },
+        "href": {
+          "description": "A hyperlink to the related order",
+              "type": "string"
+        },
+        "@referredType": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "TargetServiceSchema": {
+      "description": "",
+      
+      "required": [
+          
+            "@type",
+            "@schemaLocation"
+      ],
+      "type": "object",
+      "properties": {
+        "@type": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    },
+
+    "Value": {
+      "description": "Value is a descriptive structure for service characteristic",
+      
+      "type": "object",
+      "properties": {
+        "@type": {
+          "description": "",
+              "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "",
+              "type": "string"
+        }
+      }
+      
+    }
+  }
+}
+	
