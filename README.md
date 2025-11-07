@@ -1,11 +1,8 @@
-# TMF641_ServiceOrder
-TM Forum Open APIs (Apache 2.0) Service Order API
+# TMF641 ServiceOrder
 
-The REST API for Service Order Management provides a standardized mechanism for placing a 
-service order with all of the necessary order parameters. It allows users to create, update & 
-retrieve Service Orders and manages related notifications.
+TM Forum Open API (Apache 2.0) ServiceOrder API.
 
-To access this API; (the Specification, Postman Collection, Swagger file, 
-Reference Implementation, Conformance Profile, and CTK) go to the Open API table at:
+service order with all of the necessary order parameters. It allows users to create, update & retrieve Service Orders and manages related notifications.
 
-https://projects.tmforum.org/wiki/display/API/Open+API+Table
+The resources in this repository are a mirror of the official versions, published here for your convenience.
+The authoritative source of information for this API is: https://www.tmforum.org/oda/open-apis/directory/
